@@ -1,0 +1,6 @@
+@notetakingapi_HostAddress = http://localhost:5042
+
+GET {{notetakingapi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
