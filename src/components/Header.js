@@ -1,10 +1,16 @@
 import React from 'react';
 
-function Header() {
+function Header({ handleToggleDarkMode }) {
     return(
         <div className="header">
             <h1>Notes</h1>
-            <button className="save">Toggle Mode</button>
+            <button 
+                className="save"
+                onClick = {() => handleToggleDarkMode(
+                        (isDarkMode) => !isDarkMode
+                    )
+                }
+            >Toggle Mode</button>
         </div>
     );
 }
