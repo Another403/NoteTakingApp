@@ -7,23 +7,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 
 function App() {
-	const [notes, setNotes] = useState([
-		{
-			id: nanoid(),
-			text: 'Hello, world!',
-			date: '21/10/2025'
-		},
-		{
-			id: nanoid(),
-			text: 'Hello, world! (1)',
-			date: '21/10/2025'
-		},
-		{
-			id: nanoid(),
-			text: 'Hello, world! (2)',
-			date: '21/10/2025'
-		},
-	]);
+	const [notes, setNotes] = useState([]);
 
 	const [searchText, setSearchText] = useState('');
 	const [darkMode, setDarkMode] = useState(false);

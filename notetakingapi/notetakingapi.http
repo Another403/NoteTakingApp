@@ -1,6 +1,32 @@
-@notetakingapi_HostAddress = http://localhost:5042
+@rootURL = http://localhost:5042
 
-GET {{notetakingapi_HostAddress}}/weatherforecast/
+GET {{rootURL}}/weatherforecast/
 Accept: application/json
 
 ###
+GET {{rootURL}}/api/notes
+Accept: application/json
+
+###
+GET {{rootURL}}/api/notes/2
+Accept: application/json
+
+###
+POST {{rootURL}}/api/notes
+Content-Type: application/json
+{
+    "id": 6,
+    "content": "Seven Eleven"
+}
+
+###
+PUT {{rootURL}}/api/notes/5
+Content-Type: application/json
+{
+    "id": 7,
+    "content": "More than just Hello!"
+}
+
+###
+DELETE {{rootURL}}/api/notes/1
+Accept: application/json
