@@ -12,6 +12,12 @@ code {
 	monospace;
 }
 
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
 .container {
 	max-width: 960px;
 	margin-right: auto;
@@ -52,14 +58,14 @@ textarea:focus {
 	outline: none;
 }
 
-.save-note {
+.save {
 	background-color: #e1e1e1;
 	border: none;
 	border-radius: 15px;
 	padding: 5px 10px 5px 10px;
 }
 
-.save-note:hover {
+.save:hover {
 	background-color: #ededed;
 	cursor: pointer;
 }
@@ -72,4 +78,22 @@ textarea:focus {
 
 .delete-icon {
 	cursor: pointer;
+}
+
+.search {
+	display: flex;
+	align-items: center;
+	background-color: rgb(233, 233, 233);
+	border-radius: 10px;
+	padding: 5px;
+	margin-bottom: 1.5em;
+}
+
+.search input {
+	border: none;
+	background-color: rgb(233, 233, 233);
+}
+
+.search input:focus {
+	outline: none;
 }
