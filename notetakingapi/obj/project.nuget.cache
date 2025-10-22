@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/fz4Yxb4t9c=",
+  "dgSpecHash": "XcLO3QN6yHg=",
   "success": true,
-  "projectFilePath": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\notetakingapi.csproj",
+  "projectFilePath": "F:\\AkitoProject\\NoteTakingApp\\notetakingapi\\notetakingapi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Akito\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Akito\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

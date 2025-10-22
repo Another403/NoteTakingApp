@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\AkitoProject\\notetakingapp\\notetakingapi\\notetakingapi.csproj": {}
+    "F:\\AkitoProject\\NoteTakingApp\\notetakingapi\\notetakingapi.csproj": {}
   },
   "projects": {
-    "F:\\AkitoProject\\notetakingapp\\notetakingapi\\notetakingapi.csproj": {
+    "F:\\AkitoProject\\NoteTakingApp\\notetakingapi\\notetakingapi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\notetakingapi.csproj",
+        "projectUniqueName": "F:\\AkitoProject\\NoteTakingApp\\notetakingapi\\notetakingapi.csproj",
         "projectName": "notetakingapi",
-        "projectPath": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\notetakingapi.csproj",
+        "projectPath": "F:\\AkitoProject\\NoteTakingApp\\notetakingapi\\notetakingapi.csproj",
         "packagesPath": "C:\\Users\\Akito\\.nuget\\packages\\",
-        "outputPath": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\obj\\",
+        "outputPath": "F:\\AkitoProject\\NoteTakingApp\\notetakingapi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

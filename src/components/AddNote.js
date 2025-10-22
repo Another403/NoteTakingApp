@@ -17,7 +17,7 @@ function AddNote({ handleAddNote }) {
 		}
 	}
 
-	return(
+	return (
 		<div className="note new">
 			<textarea 
 				rows='8' 
