@@ -1,12 +1,16 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using notetakingapi.Data;
 using notetakingapi.Models;
+using System.Threading.Tasks;
 
 namespace notetakingapi.Controllers {
 	[Route("api/[controller]")]
 	[ApiController]
 	public class NotesController : ControllerBase
 	{
+		/*
 		static private List<Note> notes = new List<Note>
 		{
 			new Note
@@ -35,17 +39,25 @@ namespace notetakingapi.Controllers {
 				Content = "Hello, just Hello!",
 			}
 		};
+		*/
+
+		private readonly NoteTakingContext _context;
+
+		public NotesController(NoteTakingContext context)
+		{
+			_context = context;
+		}
 
 		[HttpGet]
-		public ActionResult<List<Note>> Get()
+		public async Task<ActionResult<List<Note>>> Get()
 		{
-			return Ok(notes);
+			return Ok(await _context.Notes.ToListAsync());
 		}
 
 		[HttpGet("{id}")]
-		public ActionResult<Note> GetNoteById(int id)
+		public async Task<ActionResult<Note>> GetNoteById(int id)
 		{
-			var note = notes.FirstOrDefault(x => x.Id == id);
+			var note = await _context.Notes.FindAsync(id);
 
 			if (note == null)
 				return NotFound();
@@ -53,19 +65,21 @@ namespace notetakingapi.Controllers {
 		}
 
 		[HttpPost]
-		public ActionResult<Note> AddNote(Note newNote)
+		public async Task<ActionResult<Note>> AddNote(Note newNote)
 		{
 			if (newNote == null)
 				return BadRequest();
 
-			notes.Add(newNote);
+			_context.Notes.Add(newNote);
+			await _context.SaveChangesAsync();
+
 			return CreatedAtAction(nameof(GetNoteById), new { id = newNote.Id }, newNote);
 		}
 
 		[HttpPut("{id}")]
-		public IActionResult UpdateNote(int id, Note updatedNote)
+		public async Task<IActionResult> UpdateNote(int id, Note updatedNote)
 		{
-			var note = notes.FirstOrDefault(x => x.Id == id);
+			var note = await _context.Notes.FindAsync(id);
 			if (note == null)
 				return NotFound();
 
@@ -73,17 +87,21 @@ namespace notetakingapi.Controllers {
 			note.Content = updatedNote.Content;
 			note.LastUpdate = DateTime.Now.Date.ToString();
 
-			return NoContent();
+			await _context.SaveChangesAsync();
+
+			return Ok(note);
 		}
 
 		[HttpDelete("{id}")]
-		public IActionResult DeleteNote(int id) {
-			var note = notes.FirstOrDefault(x => x.Id == id);
+		public async Task<IActionResult> DeleteNote(int id) {
+			var note = await _context.Notes.FindAsync(id);
 			if (note == null)
 				return NotFound();
 
-			notes.Remove(note);
-			return NoContent(); 
+			_context.Notes.Remove(note);
+			await _context.SaveChangesAsync();
+
+			return Ok(note);
 		}
 	}
 }

@@ -40,6 +40,6 @@ namespace notetakingapi.Data
 			);
 		}
 
-		public DbSet<Note> notes { get; set; }
+		public DbSet<Note> Notes { get; set; }
 	}
 }
