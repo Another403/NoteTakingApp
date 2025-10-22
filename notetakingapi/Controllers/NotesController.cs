@@ -71,7 +71,7 @@ namespace notetakingapi.Controllers {
 
 			note.Id = updatedNote.Id;
 			note.Content = updatedNote.Content;
-			note.LastUpdate = DateTime.Now.ToString();
+			note.LastUpdate = DateTime.Now.Date.ToString();
 
 			return NoContent();
 		}
