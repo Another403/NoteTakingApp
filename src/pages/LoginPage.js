@@ -6,7 +6,7 @@ import { FiUser, FiShield } from "react-icons/fi";
 function LoginPage() {
 	return (
 		<div className="container">
-			<h1>Login</h1>
+			<h1>User Login</h1>
 			<div className="login-info">
 				<div className="login-info-wrapper">
 					<div className="login-info-field">

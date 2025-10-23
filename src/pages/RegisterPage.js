@@ -6,7 +6,7 @@ import { FiUser, FiShield, FiRepeat } from "react-icons/fi";
 function RegisterPage() {
 	return (
 		<div className="container">
-			<h1>Register</h1>
+			<h1>User Register</h1>
 			<div className="login-info">
 				<div className="login-info-wrapper">
 					<div className="login-info-field">
