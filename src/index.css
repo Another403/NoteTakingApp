@@ -35,6 +35,15 @@ code {
 	min-height: 100vh;
 }
 
+.login-btn {
+	padding: 5px 10px 5px 10px;
+	border-radius: 10px;
+}
+
+.login-btn:hover {
+	cursor: pointer;
+}
+
 .notes-list {
 	display: grid;
 	grid-gap: 1rem;
@@ -57,7 +66,7 @@ code {
 }
 
 textarea {
-	border:none;
+	border: none;
 	resize: none;
 	background-color: #67d7cc;
 }
@@ -95,6 +104,38 @@ textarea:focus {
 	border-radius: 10px;
 	padding: 5px;
 	margin-bottom: 1.5em;
+}
+
+.login-info {
+	max-width: 600px;
+	padding: 20px 5px 20px 5px;
+	background-color: #67d7cc;
+	outline: auto;
+	margin: auto;
+}
+
+.login-info-wrapper {
+	max-width: 480px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.login-info-field {
+	display: flex;
+	align-items: center;
+	background-color: rgb(233, 233, 233);
+	border-radius: 10px;
+	padding: 5px;
+	margin-bottom: 1em;
+}
+
+.login-info-field input {
+	border: none;
+	background-color: rgb(233, 233, 233);
+}
+
+.login-info.info input:focus {
+	outline: none;
 }
 
 .search input {

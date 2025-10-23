@@ -2,46 +2,27 @@ import './App.css';
 import NotesList from './components/NotesList';
 import Search from './components/Search';
 import Header from './components/Header';
+import axios from 'axios';
 
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import NoteTakingPage from './pages/NoteTakingPage.js';
+import LoginPage from './pages/LoginPage.js';
+import RegisterPage from './pages/RegisterPage.js';
+
 function App() {
-	const [notes, setNotes] = useState([]);
-
-	const [searchText, setSearchText] = useState('');
-	const [darkMode, setDarkMode] = useState(false);
-
-	const addNote = (text) => {
-		const date = new Date();
-		const newNote = {
-			id: nanoid(),
-			text: text,
-			date: date.toLocaleDateString(),
-		};
-
-		const newNotes = [...notes, newNote];
-		setNotes(newNotes);
-	}
-
-	const deleteNote = (id) => {
-		const newNotes = notes.filter((note) => note.id !== id);
-		setNotes(newNotes);
-	}
-
 	return (
-		<div className={`${darkMode && 'dark-mode'}`}>
-			<div className="container">
-				<Header handleToggleDarkMode={setDarkMode}/>
-				<Search handleSearchNote={setSearchText}/>
-				<NotesList 
-					notes={notes.filter((note) =>
-						note.text.toLowerCase().includes(searchText.toLowerCase())
-					)} 
-					handleAddNote={addNote}
-					handleDeleteNote={deleteNote}
-				/>
-			</div>
+		<div className="App">
+			<BrowserRouter>
+				<Routes>
+					<Route path='/' element={<LoginPage />}/>
+					<Route path='/note' element={<NoteTakingPage />}/>
+					<Route path='/register' element={<RegisterPage />}/>
+				</Routes>
+			</BrowserRouter>
 		</div>
 	);
 }
