@@ -109,6 +109,26 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "notetakingapi.Controllers.UsersController",
+    "Method": "GetUsers",
+    "RelativePath": "api/Users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[notetakingapi.Models.User, notetakingapi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "notetakingapi.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

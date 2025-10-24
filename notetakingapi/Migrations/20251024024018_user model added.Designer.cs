@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using notetakingapi.Data;
 
@@ -10,9 +11,11 @@ using notetakingapi.Data;
 namespace notetakingapi.Migrations
 {
     [DbContext(typeof(NoteTakingContext))]
-    partial class NoteTakingContextModelSnapshot : ModelSnapshot
+    [Migration("20251024024018_user model added")]
+    partial class usermodeladded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,54 +83,6 @@ namespace notetakingapi.Migrations
                             Content = "Hello, just Hello!",
                             CreatedAt = "10/24/2025 12:00:00 AM",
                             LastUpdate = "10/24/2025 12:00:00 AM"
-                        });
-                });
-
-            modelBuilder.Entity("notetakingapi.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "",
-                            Password = "admin",
-                            Username = "Akito"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Email = "",
-                            Password = "princess",
-                            Username = "Yusa"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Email = "",
-                            Password = "alternative",
-                            Username = "Seven"
                         });
                 });
 #pragma warning restore 612, 618

@@ -38,8 +38,30 @@ namespace notetakingapi.Data
 					Content = "Hello, just Hello!",
 				}
 			);
+
+			modelBuilder.Entity<User>().HasData(
+				new User
+				{
+					Id = 1,
+					Username = "Akito",
+					Password = "admin"
+				},
+				new User
+				{
+					Id = 2,
+					Username = "Yusa",
+					Password = "princess"
+				},
+				new User
+				{
+					Id = 3,
+					Username = "Seven",
+					Password = "alternative"
+				}
+			);
 		}
 
 		public DbSet<Note> Notes { get; set; }
+		public DbSet<User> Users { get; set; }
 	}
 }
