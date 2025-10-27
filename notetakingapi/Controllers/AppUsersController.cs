@@ -8,7 +8,7 @@ namespace notetakingapi.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class UsersController : ControllerBase
+	public class AppUsersController : ControllerBase
 	{
 		/*
 		static private List<User> users = new List<User>
@@ -36,21 +36,21 @@ namespace notetakingapi.Controllers
 
 		private readonly NoteTakingContext _context;
 
-		public UsersController(NoteTakingContext context)
+		public AppUsersController(NoteTakingContext context)
 		{
 			_context = context;
 		}
 
 		
 		[HttpGet]
-		public async Task<ActionResult<List<User>>> GetUsers() {
-			return Ok(await _context.Users.ToListAsync());
+		public async Task<ActionResult<List<AppUser>>> GetUsers() {
+			return Ok(await _context.AppUsers.ToListAsync());
 		}
 
 		[HttpGet("{id}")]
-		public async Task<ActionResult<User>> GetUserById(int id)
+		public async Task<ActionResult<AppUser>> GetUserById(int id)
 		{
-			var user = await _context.Users.FindAsync(id);
+			var user = await _context.AppUsers.FindAsync(id);
 
 			if (user == null)
 			{
@@ -61,23 +61,23 @@ namespace notetakingapi.Controllers
 		}
 		
 		[HttpPost]
-		public async Task<ActionResult<Note>> AddUser(User user)
+		public async Task<ActionResult<Note>> AddUser(AppUser user)
 		{
 			if (user == null)
 			{
 				return BadRequest();
 			}
 
-			_context.Users.Add(user);
+			_context.AppUsers.Add(user);
 			await _context.SaveChangesAsync();
 
 			return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
 		}
 
 		[HttpPut("{id}")]
-		public async Task<IActionResult> UpdateUser(int id, User updateUser)
+		public async Task<IActionResult> UpdateUser(int id, AppUser updateUser)
 		{
-			var user = await _context.Users.FindAsync(id);
+			var user = await _context.AppUsers.FindAsync(id);
 
 			if (user == null)
 			{
@@ -95,14 +95,14 @@ namespace notetakingapi.Controllers
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeleteUser(int id)
 		{
-			var user = await _context.Users.FindAsync(id);
+			var user = await _context.AppUsers.FindAsync(id);
 
 			if (user == null)
 			{
 				return NotFound();
 			}
 
-			_context.Users.Remove(user);
+			_context.AppUsers.Remove(user);
 			await _context.SaveChangesAsync();
 
 			return Ok(user);

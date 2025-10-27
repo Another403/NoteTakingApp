@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using notetakingapi.Models;
 
 namespace notetakingapi.Data
 {
-	public class NoteTakingContext : DbContext
+	public class NoteTakingContext : IdentityDbContext
 	{
 		public NoteTakingContext(DbContextOptions<NoteTakingContext> options) : base(options) { }
 
@@ -39,29 +40,28 @@ namespace notetakingapi.Data
 				}
 			);
 
-			modelBuilder.Entity<User>().HasData(
-				new User
+			/*
+			modelBuilder.Entity<AppUser>().HasData(
+				new AppUser
 				{
-					Id = 1,
-					Username = "Akito",
+					UserName = "Akito",
 					Password = "admin"
 				},
-				new User
+				new AppUser
 				{
-					Id = 2,
-					Username = "Yusa",
+					UserName = "Yusa",
 					Password = "princess"
 				},
-				new User
+				new AppUser
 				{
-					Id = 3,
-					Username = "Seven",
+					UserName = "Seven",
 					Password = "alternative"
 				}
 			);
+			*/
 		}
 
 		public DbSet<Note> Notes { get; set; }
-		public DbSet<User> Users { get; set; }
+		public DbSet<AppUser> AppUsers { get; set; }
 	}
 }
