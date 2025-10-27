@@ -47,11 +47,10 @@ namespace notetakingapi.Controllers
 			return Ok(await _context.Users.ToListAsync());
 		}
 
-		/*
 		[HttpGet("{id}")]
-		public ActionResult<User> GetUserById(int id)
+		public async Task<ActionResult<User>> GetUserById(int id)
 		{
-			var user = users.FirstOrDefault(x => x.Id == id);
+			var user = await _context.Users.FindAsync(id);
 
 			if (user == null)
 			{
@@ -60,24 +59,25 @@ namespace notetakingapi.Controllers
 
 			return Ok(user);
 		}
-
+		
 		[HttpPost]
-		public ActionResult<Note> AddUser(User user)
+		public async Task<ActionResult<Note>> AddUser(User user)
 		{
 			if (user == null)
 			{
 				return BadRequest();
 			}
 
-			users.Add(user);
+			_context.Users.Add(user);
+			await _context.SaveChangesAsync();
 
 			return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
 		}
 
 		[HttpPut("{id}")]
-		public IActionResult UpdateUser(int id, User updateUser)
+		public async Task<IActionResult> UpdateUser(int id, User updateUser)
 		{
-			var user = users.FirstOrDefault(x => x.Id == id);
+			var user = await _context.Users.FindAsync(id);
 
 			if (user == null)
 			{
@@ -87,23 +87,26 @@ namespace notetakingapi.Controllers
 			user.Password = updateUser.Password;
 			user.Email = updateUser.Email;
 
+			await _context.SaveChangesAsync();
+
 			return Ok(user);
 		}
-
+		
 		[HttpDelete("{id}")]
-		public IActionResult DeleteUser(int id)
+		public async Task<IActionResult> DeleteUser(int id)
 		{
-			var user = users.FirstOrDefault(x => x.Id == id);
+			var user = await _context.Users.FindAsync(id);
 
 			if (user == null)
 			{
 				return NotFound();
 			}
 
-			users.Remove(user);
+			_context.Users.Remove(user);
+			await _context.SaveChangesAsync();
 
 			return Ok(user);
 		}
-		*/
+		
 	}
 }
