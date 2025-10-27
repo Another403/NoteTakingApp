@@ -167,3 +167,4 @@ F:\AkitoProject\notetakingapp\notetakingapi\bin\Debug\net9.0\Microsoft.AspNetCor
 F:\AkitoProject\notetakingapp\notetakingapi\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 F:\AkitoProject\notetakingapp\notetakingapi\bin\Debug\net9.0\Microsoft.Extensions.Identity.Core.dll
 F:\AkitoProject\notetakingapp\notetakingapi\bin\Debug\net9.0\Microsoft.Extensions.Identity.Stores.dll
+F:\AkitoProject\notetakingapp\notetakingapi\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
