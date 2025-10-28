@@ -58,6 +58,7 @@ code {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	text-align: left;
 	white-space: pre-wrap;
 }
 
@@ -65,10 +66,25 @@ code {
 	background-color: #67d7cc;
 }
 
+.note-title {
+	font-weight: bold;
+	font-size: 16px;
+	border-bottom: 1px solid black;
+	padding-top: 0px;
+	padding-bottom: 3px;
+}
+
+.note-content {
+	padding-top: 5px;
+	font-size: 13px;
+}
+
 textarea {
+	font-family: 'Segoe UI', sans-serif;
 	border: none;
 	resize: none;
 	background-color: #67d7cc;
+	padding-top: 5px;
 }
 
 textarea:focus {
@@ -80,6 +96,7 @@ textarea:focus {
 	border: none;
 	border-radius: 15px;
 	padding: 5px 10px 5px 10px;
+	margin: 5px 5px;
 }
 
 .save:hover {
@@ -134,7 +151,7 @@ textarea:focus {
 	background-color: rgb(233, 233, 233);
 }
 
-.login-info.info input:focus {
+.login-info-field input:focus {
 	outline: none;
 }
 

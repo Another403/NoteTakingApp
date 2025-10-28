@@ -48,7 +48,7 @@ namespace notetakingapi.Controllers
 		}
 
 		[HttpGet("{id}")]
-		public async Task<ActionResult<AppUser>> GetUserById(int id)
+		public async Task<ActionResult<AppUser>> GetUserById(string id)
 		{
 			var user = await _context.AppUsers.FindAsync(id);
 
@@ -75,7 +75,7 @@ namespace notetakingapi.Controllers
 		}
 
 		[HttpPut("{id}")]
-		public async Task<IActionResult> UpdateUser(int id, AppUser updateUser)
+		public async Task<IActionResult> UpdateUser(string id, AppUser updateUser)
 		{
 			var user = await _context.AppUsers.FindAsync(id);
 
@@ -84,7 +84,6 @@ namespace notetakingapi.Controllers
 				return NotFound();
 			}
 
-			user.Password = updateUser.Password;
 			user.Email = updateUser.Email;
 
 			await _context.SaveChangesAsync();
@@ -93,7 +92,7 @@ namespace notetakingapi.Controllers
 		}
 		
 		[HttpDelete("{id}")]
-		public async Task<IActionResult> DeleteUser(int id)
+		public async Task<IActionResult> DeleteUser(string id)
 		{
 			var user = await _context.AppUsers.FindAsync(id);
 

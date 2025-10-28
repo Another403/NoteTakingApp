@@ -2,7 +2,8 @@ import { useState } from 'react';
 
 function AddNote({ handleAddNote }) {
 	const [noteText, setNoteText] = useState('');
-	const characterLimit = 200;
+	const [noteTitle, setNoteTitle] = useState('');
+	const characterLimit = 200, titleLimit = 25;
 
 	const handleChange = (event) => {
 		if (characterLimit - event.target.value.length >= 0) {
@@ -10,16 +11,32 @@ function AddNote({ handleAddNote }) {
 		}
 	}
 
+	const handleTitleChange = (event) => {
+		if (titleLimit - event.target.value.length >= 0) {
+			setNoteTitle(event.target.value);
+		}
+	}
+
 	const handleSaveClick = () => {
 		if (noteText.trim().length > 0) {
-			handleAddNote(noteText);
+			handleAddNote(noteText, noteTitle);
 			setNoteText('');
+			setNoteTitle('');
 		}
 	}
 
 	return (
 		<div className="note new">
+			<textarea
+				className='note-title'
+				rows='1'
+				cols='10'
+				placeholder='Title'
+				onChange={handleTitleChange}
+				value={noteTitle}
+			></textarea>
 			<textarea 
+				className='note-content'
 				rows='8' 
 				cols='10' 
 				placeholder="Type to add note"

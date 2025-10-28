@@ -1,13 +1,16 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using notetakingapi.Data;
 using notetakingapi.Models;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace notetakingapi.Controllers {
 	[Route("api/[controller]")]
 	[ApiController]
+	[Authorize]
 	public class NotesController : ControllerBase
 	{
 		/*
@@ -48,10 +51,21 @@ namespace notetakingapi.Controllers {
 			_context = context;
 		}
 
+		/*
 		[HttpGet]
 		public async Task<ActionResult<List<Note>>> Get()
 		{
 			return Ok(await _context.Notes.ToListAsync());
+		}
+		*/
+
+		[HttpGet]
+		public async Task<ActionResult<List<Note>>> GetUserNotes()
+		{
+			var userId = User.FindFirstValue("UserID");
+			var notes = await _context.Notes.Where(x => x.UserId == userId).ToListAsync();
+
+			return Ok(notes);
 		}
 
 		[HttpGet("{id}")]
@@ -85,7 +99,7 @@ namespace notetakingapi.Controllers {
 
 			note.Id = updatedNote.Id;
 			note.Content = updatedNote.Content;
-			note.LastUpdate = DateTime.Now.Date.ToString();
+			note.LastUpdate = DateOnly.FromDateTime(DateTime.Now).ToString();
 
 			await _context.SaveChangesAsync();
 

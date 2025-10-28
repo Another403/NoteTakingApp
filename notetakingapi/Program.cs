@@ -13,7 +13,7 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+#region builder.Services
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddEndpointsApiExplorer();
@@ -28,6 +28,9 @@ builder.Services.AddAuthentication(x =>
 	y.TokenValidationParameters = new TokenValidationParameters
 	{
 		ValidateIssuerSigningKey = true,
+		ValidateAudience = false,
+		ValidateIssuer = false,
+		ValidateLifetime = true,
 		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["AppSettings:JWTSecret"]!))
 	};
 });
@@ -48,6 +51,16 @@ builder.Services
 
 builder.Services.AddDbContext<NoteTakingContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("AllowFrontend", policy =>
+	{
+		policy.WithOrigins("http://localhost:3000")
+			  .AllowAnyHeader()
+			  .AllowAnyMethod();
+	});
+});
+#endregion
 
 var app = builder.Build();
 
@@ -57,16 +70,16 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseCors();
-
+#region app.Use
+app.UseCors("AllowFrontend");
+app.UseRouting();
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.MapGroup("/api")
    .MapIdentityApi<IdentityUser>();
+#endregion
 
 app.MapPost("/api/signup", async (
 	UserManager<AppUser> userManager,
@@ -89,7 +102,7 @@ app.MapPost("/api/signup", async (
 		return Results.BadRequest(result);
 	});
 
-app.MapPost("api/signin", async(
+app.MapPost("api/signin", async (
 	UserManager<AppUser> userManager,
 	[FromBody] LoginModel loginModel
 	) =>
@@ -104,7 +117,6 @@ app.MapPost("api/signin", async(
 				{
 					new Claim("UserID", user.Id.ToString())
 				}),
-				Expires = DateTime.UtcNow.AddMinutes(10),
 				SigningCredentials = new SigningCredentials(
 					signInKey,
 					SecurityAlgorithms.HmacSha256Signature
@@ -123,6 +135,10 @@ app.MapPost("api/signin", async(
 		}
 	});
 
+app.MapPut("api/{id}/change-password", async () => {
+
+});
+
 app.Run();
 
 public class UserRegistrationModel
@@ -136,5 +152,4 @@ public class LoginModel
 {
 	public string Email { get; set; } = null!;
 	public string Password { get; set; } = null!;
-	public string FullName { get; set; } = null!;
 }

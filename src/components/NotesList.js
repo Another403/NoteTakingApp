@@ -7,8 +7,9 @@ function NotesList({ notes, handleAddNote, handleDeleteNote }) {
 			{notes.map((note) => (
 				<Note 
 					id={note.id} 
-					text={note.text} 
-					date={note.date}
+					title={note.title}
+					content={note.content} 
+					createdAt={note.createdAt} 
 					handleDeleteNote={handleDeleteNote}
 				/>
 			))}

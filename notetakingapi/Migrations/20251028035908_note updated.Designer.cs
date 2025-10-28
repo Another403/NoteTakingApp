@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using notetakingapi.Data;
 
@@ -11,9 +12,11 @@ using notetakingapi.Data;
 namespace notetakingapi.Migrations
 {
     [DbContext(typeof(NoteTakingContext))]
-    partial class NoteTakingContextModelSnapshot : ModelSnapshot
+    [Migration("20251028035908_note updated")]
+    partial class noteupdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -249,10 +252,6 @@ namespace notetakingapi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -268,7 +267,6 @@ namespace notetakingapi.Migrations
                             Content = "Hello, World!",
                             CreatedAt = "10/28/2025",
                             LastUpdate = "10/28/2025",
-                            Title = "",
                             UserId = ""
                         },
                         new
@@ -277,7 +275,6 @@ namespace notetakingapi.Migrations
                             Content = "Hello, Akito!",
                             CreatedAt = "10/28/2025",
                             LastUpdate = "10/28/2025",
-                            Title = "",
                             UserId = ""
                         },
                         new
@@ -286,7 +283,6 @@ namespace notetakingapi.Migrations
                             Content = "Hello, Seven!",
                             CreatedAt = "10/28/2025",
                             LastUpdate = "10/28/2025",
-                            Title = "",
                             UserId = ""
                         },
                         new
@@ -295,7 +291,6 @@ namespace notetakingapi.Migrations
                             Content = "Hello!",
                             CreatedAt = "10/28/2025",
                             LastUpdate = "10/28/2025",
-                            Title = "",
                             UserId = ""
                         },
                         new
@@ -304,7 +299,6 @@ namespace notetakingapi.Migrations
                             Content = "Hello, just Hello!",
                             CreatedAt = "10/28/2025",
                             LastUpdate = "10/28/2025",
-                            Title = "",
                             UserId = ""
                         });
                 });

@@ -3,6 +3,7 @@ import NotesList from '../components/NotesList';
 import Search from '../components/Search';
 import Header from '../components/Header';
 import axios from 'axios';
+import {api} from '../api';
 
 import React, { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
@@ -13,17 +14,28 @@ function NoteTakingPage() {
 	const [searchText, setSearchText] = useState('');
 	const [darkMode, setDarkMode] = useState(false);
 
-	const addNote = (text) => {
+	const addNote = (content, title) => {
 		const date = new Date();
 		const newNote = {
 			id: nanoid(),
-			text: text,
-			date: date.toLocaleDateString()
+			title: title,
+			content: content,
+			createdAt: date.toLocaleDateString()
 		};
 
 		const newNotes = [...notes, newNote];
 		setNotes(newNotes);
 	}
+
+	useEffect(() => {
+		api.get('/notes', {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`
+			}
+		})
+		.then(res => setNotes(res.data))
+		.catch(err => console.error(err));
+	}, []);
 
 	const deleteNote = (id) => {
 		const newNotes = notes.filter((note) => note.id !== id);
@@ -37,7 +49,7 @@ function NoteTakingPage() {
 				<Search handleSearchNote={setSearchText}/>
 				<NotesList 
 					notes={notes.filter((note) =>
-						note.text.toLowerCase().includes(searchText.toLowerCase())
+						note.content.toLowerCase().includes(searchText.toLowerCase())
 					)} 
 					handleAddNote={addNote}
 					handleDeleteNote={deleteNote}

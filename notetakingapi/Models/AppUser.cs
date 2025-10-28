@@ -9,5 +9,4 @@ public class AppUser : IdentityUser
 	[PersonalData]
 	[Column(TypeName = "nvarchar(150)")]
 	public string FullName { get; set; } = null!;
-	public string Password { get; set; } = null!;
 }
