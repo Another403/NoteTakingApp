@@ -14,17 +14,29 @@ function NoteTakingPage() {
 	const [searchText, setSearchText] = useState('');
 	const [darkMode, setDarkMode] = useState(false);
 
-	const addNote = (content, title) => {
-		const date = new Date();
-		const newNote = {
-			id: nanoid(),
-			title: title,
-			content: content,
-			createdAt: date.toLocaleDateString()
-		};
+	const fetchNotes = async () => {
+		const res = await api.get('/notes', {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`
+			}
+		});
+		setNotes(res.data);
+	}
 
-		const newNotes = [...notes, newNote];
-		setNotes(newNotes);
+	const addNote = async (content, title) => {
+		try {
+			await api.post('/notes', {
+				title: title,
+				content: content
+			}, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem('token')}`
+				}
+			});
+			await fetchNotes();
+		} catch (err) {
+			console.error(err);
+		}
 	}
 
 	useEffect(() => {

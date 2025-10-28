@@ -79,10 +79,14 @@ namespace notetakingapi.Controllers {
 		}
 
 		[HttpPost]
-		public async Task<ActionResult<Note>> AddNote(Note newNote)
+		public async Task<ActionResult<Note>> AddNote([FromBody] Note newNote)
 		{
+			var userId = User.FindFirstValue("UserID");
+			if (userId == null) return Unauthorized();
+
 			if (newNote == null)
 				return BadRequest();
+			newNote.UserId = userId;
 
 			_context.Notes.Add(newNote);
 			await _context.SaveChangesAsync();

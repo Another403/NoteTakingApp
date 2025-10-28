@@ -370,16 +370,6 @@
   },
   {
     "ContainingType": "notetakingapi.Controllers.NotesController",
-    "Method": "UpdateAllTitle",
-    "RelativePath": "api/Notes",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "notetakingapi.Controllers.NotesController",
     "Method": "GetNoteById",
     "RelativePath": "api/Notes/{id}",
     "HttpMethod": "GET",
