@@ -174,6 +174,23 @@ app.MapPost("api/refreshToken", async (
 
 		return Results.Ok(new { token });
 	});
+
+app.MapPost("api/logout", async (
+	UserManager<AppUser> userManager,
+	ClaimsPrincipal currentUser
+	) =>
+	{
+		var user = await userManager.FindByIdAsync(
+					currentUser.FindFirstValue("UserID"));
+
+		if (user == null) return Results.NotFound();
+
+		user.RefreshToken = null;
+		user.RefreshTokenExpiry = DateTime.MinValue;
+		await userManager.UpdateAsync(user);
+
+		return Results.Ok(new { message = "logged out succesfully" });
+	});
 #endregion
 
 app.Run();

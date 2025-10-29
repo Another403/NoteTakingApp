@@ -46,10 +46,21 @@ function NoteTakingPage() {
 		}
 	}
 
+	const handleLogout = async () => {
+		try {
+			await api.post("/logout");
+		} finally {
+			localStorage.clear();
+			window.location.href = "/";
+		}
+	}
+
 	return (
 		<div className={`${darkMode && 'dark-mode'}`}>
 			<div className="container">
-				<Header handleToggleDarkMode={setDarkMode}/>
+				<Header 
+					handleToggleDarkMode={setDarkMode}
+					handleLogout={handleLogout}/>
 				<Search handleSearchNote={setSearchText}/>
 				<NotesList 
 					notes={notes.filter((note) =>
