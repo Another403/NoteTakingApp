@@ -15,11 +15,7 @@ function NoteTakingPage() {
 	const [darkMode, setDarkMode] = useState(false);
 
 	const fetchNotes = async () => {
-		const res = await api.get('/notes', {
-			headers: {
-				Authorization: `Bearer ${localStorage.getItem('token')}`
-			}
-		});
+		const res = await api.get('/notes');
 		setNotes(res.data);
 	}
 
@@ -28,10 +24,6 @@ function NoteTakingPage() {
 			await api.post('/notes', {
 				title: title,
 				content: content
-			}, {
-				headers: {
-					Authorization: `Bearer ${localStorage.getItem('token')}`
-				}
 			});
 			await fetchNotes();
 		} catch (err) {
@@ -40,18 +32,18 @@ function NoteTakingPage() {
 	}
 
 	useEffect(() => {
-		api.get('/notes', {
-			headers: {
-				Authorization: `Bearer ${localStorage.getItem('token')}`
-			}
-		})
+		api.get('/notes')
 		.then(res => setNotes(res.data))
 		.catch(err => console.error(err));
 	}, []);
 
-	const deleteNote = (id) => {
-		const newNotes = notes.filter((note) => note.id !== id);
-		setNotes(newNotes);
+	const deleteNote = async (id) => {
+		try {
+			await api.delete(`/notes/${id}`);
+			await fetchNotes();
+		} catch (err) {
+			console.error(err);
+		}
 	}
 
 	return (

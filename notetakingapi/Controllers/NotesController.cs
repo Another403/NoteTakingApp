@@ -51,13 +51,12 @@ namespace notetakingapi.Controllers {
 			_context = context;
 		}
 
-		/*
-		[HttpGet]
+		[AllowAnonymous]
+		[HttpGet("all")]
 		public async Task<ActionResult<List<Note>>> Get()
 		{
 			return Ok(await _context.Notes.ToListAsync());
 		}
-		*/
 
 		[HttpGet]
 		public async Task<ActionResult<List<Note>>> GetUserNotes()
@@ -112,9 +111,16 @@ namespace notetakingapi.Controllers {
 
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeleteNote(int id) {
+			var userId = User.FindFirstValue("UserID");
+			if (userId == null) 
+				return Unauthorized();
+
 			var note = await _context.Notes.FindAsync(id);
 			if (note == null)
 				return NotFound();
+
+			if (note.UserId != userId)
+				return BadRequest();
 
 			_context.Notes.Remove(note);
 			await _context.SaveChangesAsync();

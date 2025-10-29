@@ -81,6 +81,7 @@ app.MapGroup("/api")
    .MapIdentityApi<IdentityUser>();
 #endregion
 
+#region Endpoints
 app.MapPost("/api/signup", async (
 	UserManager<AppUser> userManager,
 	[FromBody] UserRegistrationModel userRegistrationModel
@@ -117,6 +118,7 @@ app.MapPost("api/signin", async (
 				{
 					new Claim("UserID", user.Id.ToString())
 				}),
+				Expires = DateTime.UtcNow.AddMinutes(15),
 				SigningCredentials = new SigningCredentials(
 					signInKey,
 					SecurityAlgorithms.HmacSha256Signature
@@ -127,7 +129,12 @@ app.MapPost("api/signin", async (
 			var securityToken = tokenHandler.CreateToken(tokenDescriptor);
 			var token = tokenHandler.WriteToken(securityToken);
 
-			return Results.Ok(new { token });
+			var refreshToken = Guid.NewGuid().ToString();
+			user.RefreshToken = refreshToken;
+			user.RefreshTokenExpiry = DateTime.UtcNow.AddDays(7);
+			await userManager.UpdateAsync(user);
+
+			return Results.Ok(new { token, refreshToken });
 		} 
 		else
 		{
@@ -135,9 +142,39 @@ app.MapPost("api/signin", async (
 		}
 	});
 
-app.MapPut("api/{id}/change-password", async () => {
+app.MapPost("api/refreshToken", async (
+	UserManager<AppUser> userManager,
+	[FromBody] RefreshModel refreshModel
+	) => 
+	{
+		AppUser user = await userManager.Users.FirstOrDefaultAsync(x => x.RefreshToken == refreshModel.RefreshToken);
 
-});
+		if (user == null || user.RefreshTokenExpiry <= DateTime.UtcNow)
+		{
+			return Results.Unauthorized();
+		}
+
+		var signInKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["AppSettings:JWTSecret"]!));
+		var tokenDescriptor = new SecurityTokenDescriptor
+		{
+			Subject = new ClaimsIdentity(new Claim[]
+			{
+					new Claim("UserID", user.Id.ToString())
+			}),
+			Expires = DateTime.UtcNow.AddMinutes(15),
+			SigningCredentials = new SigningCredentials(
+				signInKey,
+				SecurityAlgorithms.HmacSha256Signature
+				)
+		};
+
+		var tokenHandler = new JwtSecurityTokenHandler();
+		var securityToken = tokenHandler.CreateToken(tokenDescriptor);
+		var token = tokenHandler.WriteToken(securityToken);
+
+		return Results.Ok(new { token });
+	});
+#endregion
 
 app.Run();
 
@@ -152,4 +189,9 @@ public class LoginModel
 {
 	public string Email { get; set; } = null!;
 	public string Password { get; set; } = null!;
+}
+
+public class RefreshModel
+{
+	public string RefreshToken { get; set; } = null!;
 }
