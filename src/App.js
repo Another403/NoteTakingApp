@@ -13,10 +13,13 @@ import NoteTakingPage from './pages/NoteTakingPage.js';
 import LoginPage from './pages/LoginPage.js';
 import RegisterPage from './pages/RegisterPage.js';
 
+import PageTitles from './helpers/PageTitles.js';
+
 function App() {
 	return (
 		<div className="App">
 			<BrowserRouter>
+				<PageTitles/>
 				<Routes>
 					<Route path='/' element={<LoginPage />}/>
 					<Route path='/note' element={<NoteTakingPage />}/>

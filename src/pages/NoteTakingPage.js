@@ -20,6 +20,8 @@ function NoteTakingPage() {
 	}
 
 	const addNote = async (content, title) => {
+		const newNote = { id: nanoid(), title, content };
+		setNotes(prev => [...prev, newNote]);
 		try {
 			await api.post('/notes', {
 				title: title,
@@ -28,6 +30,7 @@ function NoteTakingPage() {
 			await fetchNotes();
 		} catch (err) {
 			console.error(err);
+			fetchNotes();
 		}
 	}
 
@@ -38,11 +41,13 @@ function NoteTakingPage() {
 	}, []);
 
 	const deleteNote = async (id) => {
+		setNotes(notes.filter(note => note.id !== id));
 		try {
 			await api.delete(`/notes/${id}`);
 			await fetchNotes();
 		} catch (err) {
 			console.error(err);
+			fetchNotes();
 		}
 	}
 

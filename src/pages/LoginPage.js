@@ -43,6 +43,9 @@ function LoginPage() {
 					<div>
 							<button className="login-btn" onClick={handleLogin}>Login</button>
 					</div>
+					<div>
+						<a href='/register'>Register as new user</a>
+					</div>
 				</div>
 			</div>
 		</div>

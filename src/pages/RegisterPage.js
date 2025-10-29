@@ -56,6 +56,10 @@ function RegisterPage() {
 					<div>
 						<button className="login-btn" onClick={handleRegister}>Register</button>
 					</div>
+					<span>Already have an account?</span>
+					<div>
+						<a href='/'>Go to login page</a>
+					</div>
 				</div>
 			</div>
 		</div>
