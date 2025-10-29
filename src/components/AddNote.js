@@ -1,13 +1,19 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 function AddNote({ handleAddNote }) {
 	const [noteText, setNoteText] = useState('');
 	const [noteTitle, setNoteTitle] = useState('');
-	const characterLimit = 200, titleLimit = 25;
+	const characterLimit = 200, titleLimit = 100;
+
+	const textareaRef = useRef(null);
 
 	const handleChange = (event) => {
 		if (characterLimit - event.target.value.length >= 0) {
 			setNoteText(event.target.value);
+
+			const textarea = textareaRef.current;
+			textarea.style.height = 'auto';
+			textarea.style.height = `${textarea.scrollHeight}px`;
 		}
 	}
 
@@ -28,8 +34,9 @@ function AddNote({ handleAddNote }) {
 	return (
 		<div className="note new">
 			<textarea
+				ref={textareaRef}
 				className='note-title'
-				rows='1'
+				rows={1}
 				cols='10'
 				placeholder='Title'
 				onChange={handleTitleChange}

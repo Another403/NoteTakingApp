@@ -8,7 +8,7 @@ import {api} from '../api';
 import React, { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 
-function NoteTakingPage() {
+function TrashPage() {
 	const [notes, setNotes] = useState([]);
 
 	const [searchText, setSearchText] = useState('');
@@ -63,15 +63,15 @@ function NoteTakingPage() {
 	return (
 		<div className={`${darkMode && 'dark-mode'}`}>
 			<div className="container">
-				<Header
-					pageTitle="Notes" 
+				<Header 
+					pageTitle="Trash"
 					handleToggleDarkMode={setDarkMode}
 					handleLogout={handleLogout}/>
 				<Search handleSearchNote={setSearchText}/>
 				<NotesList 
 					notes={notes.filter((note) =>
 						note.content.toLowerCase().includes(searchText.toLowerCase())
-						&& note.isTrash == false
+						&& note.isTrash == true
 					)} 
 					handleAddNote={addNote}
 					handleDeleteNote={deleteNote}
@@ -81,4 +81,4 @@ function NoteTakingPage() {
 	);
 }
 
-export default NoteTakingPage;
+export default TrashPage;

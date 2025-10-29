@@ -7,7 +7,7 @@ function PageTitles() {
 	useEffect(() => {
 		let title = "NoteTakingApp";
 
-		switch (pathname) {
+		switch (pathname.toLocaleLowerCase().toLowerCase()) {
 			case "/":
 				title = "Login | NoteTakingApp";
 				break;
@@ -16,6 +16,9 @@ function PageTitles() {
 				break;
 			case "/register":
 				title = "Register | NoteTakingApp";
+				break;
+			case "/trash":
+				title = "Trash | NoteTakingApp";
 				break;
 			default:
 				title = "Not Found";

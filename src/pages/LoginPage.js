@@ -20,6 +20,7 @@ function LoginPage() {
 				password: password
 			});
 			localStorage.setItem('token', res.data.token);
+			localStorage.setItem('refreshToken', res.data.refreshToken);
 			
 			navigate('/note');
 		} catch (err) {

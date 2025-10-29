@@ -116,7 +116,7 @@ app.MapPost("api/signin", async (
 			{
 				Subject = new ClaimsIdentity(new Claim[]
 				{
-					new Claim("UserID", user.Id.ToString())
+					new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
 				}),
 				Expires = DateTime.UtcNow.AddMinutes(15),
 				SigningCredentials = new SigningCredentials(
@@ -159,7 +159,7 @@ app.MapPost("api/refreshToken", async (
 		{
 			Subject = new ClaimsIdentity(new Claim[]
 			{
-					new Claim("UserID", user.Id.ToString())
+				new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
 			}),
 			Expires = DateTime.UtcNow.AddMinutes(15),
 			SigningCredentials = new SigningCredentials(
@@ -181,7 +181,7 @@ app.MapPost("api/logout", async (
 	) =>
 	{
 		var user = await userManager.FindByIdAsync(
-					currentUser.FindFirstValue("UserID"));
+					currentUser.FindFirstValue(ClaimTypes.NameIdentifier));
 
 		if (user == null) return Results.NotFound();
 

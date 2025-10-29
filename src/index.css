@@ -72,6 +72,9 @@ code {
 	border-bottom: 1px solid black;
 	padding-top: 0px;
 	padding-bottom: 3px;
+	white-space: normal;
+	max-width: 100%;
+	word-break: break-word;
 }
 
 .note-content {
@@ -89,6 +92,10 @@ textarea {
 
 textarea:focus {
 	outline: none;
+}
+
+textarea .note-title {
+	resize: vertical;
 }
 
 .save {

@@ -61,7 +61,7 @@ namespace notetakingapi.Controllers {
 		[HttpGet]
 		public async Task<ActionResult<List<Note>>> GetUserNotes()
 		{
-			var userId = User.FindFirstValue("UserID");
+			var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 			var notes = await _context.Notes.Where(x => x.UserId == userId).ToListAsync();
 
 			return Ok(notes);
@@ -80,7 +80,7 @@ namespace notetakingapi.Controllers {
 		[HttpPost]
 		public async Task<ActionResult<Note>> AddNote([FromBody] Note newNote)
 		{
-			var userId = User.FindFirstValue("UserID");
+			var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 			if (userId == null) return Unauthorized();
 
 			if (newNote == null)
@@ -111,7 +111,7 @@ namespace notetakingapi.Controllers {
 
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeleteNote(int id) {
-			var userId = User.FindFirstValue("UserID");
+			var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 			if (userId == null) 
 				return Unauthorized();
 
@@ -122,7 +122,14 @@ namespace notetakingapi.Controllers {
 			if (note.UserId != userId)
 				return BadRequest();
 
-			_context.Notes.Remove(note);
+			if (note.IsTrash)
+			{
+				_context.Notes.Remove(note);
+			}
+			else
+			{
+				note.IsTrash = true;
+			}
 			await _context.SaveChangesAsync();
 
 			return Ok(note);

@@ -8,4 +8,5 @@ public class Note
 	public string Content { get; set; } = null!;
 	public string CreatedAt { get; set; } = DateOnly.FromDateTime(DateTime.Now).ToString();
 	public string LastUpdate { get; set; } = DateOnly.FromDateTime(DateTime.Now).ToString();
+	public bool IsTrash { get; set; } = false;
 }
