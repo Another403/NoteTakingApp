@@ -8,7 +8,7 @@ import {api} from '../api';
 import React, { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 
-function TrashPage() {
+function NoteTakingPage() {
 	const [notes, setNotes] = useState([]);
 
 	const [searchText, setSearchText] = useState('');
@@ -51,10 +51,10 @@ function TrashPage() {
 		}
 	}
 
-	const restoreNote = async (id) => {
-		setNotes(notes.filter(note => note.id !== id));
+	const toggleFavorites = async (id) => {
+        setNotes(notes.filter(note => note.id !== id));
 		try {
-			await api.put(`/notes/restore/${id}`);
+			await api.put(`/notes/favorite/${id}`);
 			await fetchNotes();
 		} catch (err) {
 			console.error(err);
@@ -74,23 +74,24 @@ function TrashPage() {
 	return (
 		<div className={`${darkMode && 'dark-mode'}`}>
 			<div className="container">
-				<Header 
-					pageTitle="Trash"
+				<Header
+					pageTitle="Favorites" 
 					handleToggleDarkMode={setDarkMode}
 					handleLogout={handleLogout}/>
 				<Search handleSearchNote={setSearchText}/>
 				<NotesList 
 					notes={notes.filter((note) =>
 						note.content.toLowerCase().includes(searchText.toLowerCase())
-						&& note.isTrash === true
+						&& note.isTrash === false
+                        && note.isFavorite === true
 					)} 
 					handleAddNote={addNote}
 					handleDeleteNote={deleteNote}
-					handleRestoreNote={restoreNote}
+					toggleFavorites={toggleFavorites}
 				/>
 			</div>
 		</div>
 	);
 }
 
-export default TrashPage;
+export default NoteTakingPage;

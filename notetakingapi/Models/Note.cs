@@ -9,4 +9,5 @@ public class Note
 	public string CreatedAt { get; set; } = DateOnly.FromDateTime(DateTime.Now).ToString();
 	public string LastUpdate { get; set; } = DateOnly.FromDateTime(DateTime.Now).ToString();
 	public bool IsTrash { get; set; } = false;
+	public bool IsFavorite { get; set; } = false;
 }

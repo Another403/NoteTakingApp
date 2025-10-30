@@ -20,6 +20,9 @@ function PageTitles() {
 			case "/trash":
 				title = "Trash | NoteTakingApp";
 				break;
+			case "/favorites":
+				title = "Favorites | NoteTakingApp";
+				break;
 			default:
 				title = "Not Found";
 				break;

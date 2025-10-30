@@ -109,6 +109,47 @@ namespace notetakingapi.Controllers {
 			return Ok(note);
 		}
 
+		[HttpPut("favorite/{id}")]
+		public async Task<IActionResult> ToggleFavoriteStatus(int id)
+		{
+			var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+			if (userId == null)
+				return Unauthorized();
+
+			var note = await _context.Notes.FindAsync(id);
+			if (note == null)
+				return NotFound();
+			
+			if (note.UserId != userId)
+				return BadRequest();
+
+			note.IsFavorite = !note.IsFavorite;
+			note.LastUpdate = DateOnly.FromDateTime(DateTime.Now).ToString(); 
+			await _context.SaveChangesAsync();
+
+			return Ok(note);
+		}
+
+		[HttpPut("restore/{id}")]
+		public async Task<IActionResult> RestoreNote(int id)
+		{
+			var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+			if (userId == null)
+				return Unauthorized();
+
+			var note = await _context.Notes.FindAsync(id);
+			if (note == null)
+				return NotFound();
+
+			if (note.UserId != userId)
+				return BadRequest();
+
+			note.IsTrash = false;
+			await _context.SaveChangesAsync();
+
+			return Ok(note);
+		}
+
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeleteNote(int id) {
 			var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);

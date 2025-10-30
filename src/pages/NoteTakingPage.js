@@ -51,6 +51,16 @@ function NoteTakingPage() {
 		}
 	}
 
+	const toggleFavorites = async (id) => {
+		try {
+			await api.put(`/notes/favorite/${id}`);
+			await fetchNotes();
+		} catch (err) {
+			console.error(err);
+			fetchNotes();
+		}
+	}
+
 	const handleLogout = async () => {
 		try {
 			await api.post("/logout");
@@ -71,10 +81,11 @@ function NoteTakingPage() {
 				<NotesList 
 					notes={notes.filter((note) =>
 						note.content.toLowerCase().includes(searchText.toLowerCase())
-						&& note.isTrash == false
+						&& note.isTrash === false
 					)} 
 					handleAddNote={addNote}
 					handleDeleteNote={deleteNote}
+					toggleFavorites={toggleFavorites}
 				/>
 			</div>
 		</div>

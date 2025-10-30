@@ -13,6 +13,7 @@ import NoteTakingPage from './pages/NoteTakingPage.js';
 import LoginPage from './pages/LoginPage.js';
 import RegisterPage from './pages/RegisterPage.js';
 import TrashPage from './pages/TrashPage.js';
+import FavoritesPage from './pages/FavoritesPage.js';
 
 import PageTitles from './helpers/PageTitles.js';
 
@@ -26,6 +27,7 @@ function App() {
 					<Route path='/note' element={<NoteTakingPage />}/>
 					<Route path='/register' element={<RegisterPage />}/>
 					<Route path='/trash' element={<TrashPage/>}/>
+					<Route path='/favorites' element={<FavoritesPage/>}/>
 				</Routes>
 			</BrowserRouter>
 		</div>
