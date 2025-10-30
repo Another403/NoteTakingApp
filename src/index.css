@@ -117,6 +117,10 @@ textarea .note-title {
 	justify-content: space-between;
 }
 
+.note-footer-btn {
+	align-items:center;
+}
+
 .feature-icon {
 	cursor: pointer;
 }

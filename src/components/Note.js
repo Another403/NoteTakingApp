@@ -1,10 +1,12 @@
-import { MdDeleteForever, MdOutlineAutorenew } from 'react-icons/md';
+import { MdDeleteForever, MdOutlineAutorenew, MdOutlineStarRate, MdOutlineStarPurple500 } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
 
 function Note({ id, title, content, createdAt, isFavorite, handleDeleteNote, handleRestoreNote, toggleFavorites }) {
 	const location = useLocation();
 
 	const isTrashPage = location.pathname.toLocaleLowerCase().toLowerCase() === '/trash';
+
+	const StarIcon = isFavorite ? MdOutlineStarPurple500 : MdOutlineStarRate;
 
 	return (
 		<div className='note'>
@@ -18,7 +20,7 @@ function Note({ id, title, content, createdAt, isFavorite, handleDeleteNote, han
 			</div>
 			<div className='note-footer'>
 				<small>{createdAt}</small>
-				<div>
+				<div className='note-footer-btn'>
 					{ isTrashPage ? (
 						<MdOutlineAutorenew 
 							onClick={() => handleRestoreNote(id)}
@@ -26,10 +28,14 @@ function Note({ id, title, content, createdAt, isFavorite, handleDeleteNote, han
 							size='1.3em'
 						/>
 					) : (
-						<button class='save' onClick={() => {
-							toggleFavorites(id);
-							isFavorite = !isFavorite;
-						}}>{isFavorite ? "★" : "☆"}</button>
+						<StarIcon
+							onClick={() => {
+								isFavorite = !isFavorite;
+								toggleFavorites(id);
+							}}
+							class='feature-icon'
+							size="1.3em"
+						/>
 					)}
 					<MdDeleteForever 
 						onClick={() => handleDeleteNote(id)} 
