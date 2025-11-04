@@ -62,9 +62,10 @@ builder.Services.AddCors(options =>
 {
 	options.AddPolicy("AllowFrontend", policy =>
 	{
-		policy.WithOrigins(["http://localhost:3000", "https://main.d2visxrhjj6xh4.amplifyapp.com"])
+		policy.WithOrigins("http://localhost:3000", "https://main.d2visxrhjj6xh4.amplifyapp.com")
 			  .AllowAnyHeader()
-			  .AllowAnyMethod();
+			  .AllowAnyMethod()
+			  .AllowCredentials();
 	});
 });
 #endregion
@@ -84,6 +85,17 @@ app.UseRouting();
 app.UseCors("AllowFrontend");
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.Use(async (context, next) =>
+{
+	if (context.Request.Method == "OPTIONS")
+	{
+		context.Response.StatusCode = 200;
+		return;
+	}
+	await next();
+});
+
 app.MapControllers();
 app.MapGroup("/api")
    .MapIdentityApi<IdentityUser>();
