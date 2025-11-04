@@ -10,6 +10,7 @@ function Header({ handleToggleDarkMode, handleLogout, pageTitle }) {
 			<h1>{pageTitle}</h1>
 			<div className="header-buttons">
 				<button className="save" onClick={handleLogout}>Logout</button>
+				<button className="save" onClick={() => navigate('/passwordchange')}>Change Password</button>
 				<button className="save" onClick={() => navigate('/note')}>Notes</button>
 				<button className="save" onClick={() => navigate('/favorites')}>Favorites</button>
 				<button className="save" onClick={() => navigate('/trash')}>Trash</button>

@@ -13,36 +13,6 @@ namespace notetakingapi.Controllers {
 	[Authorize]
 	public class NotesController : ControllerBase
 	{
-		/*
-		static private List<Note> notes = new List<Note>
-		{
-			new Note
-			{
-				Id = 1,
-				Content = "Hello, World!",
-			},
-			new Note
-			{
-				Id = 2,
-				Content = "Hello, Akito!",
-			},
-			new Note
-			{
-				Id = 3,
-				Content = "Hello, Seven!",
-			},
-			new Note
-			{
-				Id = 4,
-				Content = "Hello!",
-			},
-			new Note
-			{
-				Id = 5,
-				Content = "Hello, just Hello!",
-			}
-		};
-		*/
 
 		private readonly NoteTakingContext _context;
 

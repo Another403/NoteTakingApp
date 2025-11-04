@@ -1,0 +1,17 @@
+{
+  "region": "ap-southeast-2",
+  "profile": "akito",
+  "configuration": "Release",
+  "framework": "net8.0",
+  "function-name": "noteTakingFunction",
+  "function-description": "",
+  "package-type": "Zip",
+  "function-handler": "notetakingapi",
+  "function-memory-size": 512,
+  "function-timeout": 15,
+  "function-runtime": "dotnet8",
+  "function-architecture": "x86_64",
+  "tracing-mode": "PassThrough",
+  "environment-variables": "",
+  "image-tag": ""
+}

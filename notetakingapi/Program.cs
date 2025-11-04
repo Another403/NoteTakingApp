@@ -1,14 +1,18 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using notetakingapi.Data;
-using notetakingapi.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Amazon.Lambda.AspNetCoreServer;
+using Amazon.Lambda.AspNetCoreServer.Hosting;
+
+using notetakingapi.Data;
+using notetakingapi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +20,9 @@ var builder = WebApplication.CreateBuilder(args);
 #region builder.Services
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddAWSLambdaHosting(LambdaEventSource.RestApi);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAuthentication(x =>
 {
@@ -67,13 +74,14 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+	app.UseSwagger();
+	app.UseSwaggerUI();
 }
 
 #region app.Use
-app.UseCors("AllowFrontend");
-app.UseRouting();
 app.UseHttpsRedirection();
+app.UseRouting();
+app.UseCors("AllowFrontend");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
@@ -175,7 +183,7 @@ app.MapPost("api/refreshToken", async (
 		return Results.Ok(new { token });
 	});
 
-app.MapPost("api/logout", async (
+app.MapPost("api/logout", [Authorize] async (
 	UserManager<AppUser> userManager,
 	ClaimsPrincipal currentUser
 	) =>
@@ -191,6 +199,8 @@ app.MapPost("api/logout", async (
 
 		return Results.Ok(new { message = "logged out succesfully" });
 	});
+
+app.MapGet("/", () => "Hello World!");
 #endregion
 
 app.Run();

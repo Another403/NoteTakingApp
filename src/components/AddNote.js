@@ -5,15 +5,9 @@ function AddNote({ handleAddNote }) {
 	const [noteTitle, setNoteTitle] = useState('');
 	const characterLimit = 200, titleLimit = 100;
 
-	const textareaRef = useRef(null);
-
 	const handleChange = (event) => {
 		if (characterLimit - event.target.value.length >= 0) {
 			setNoteText(event.target.value);
-
-			const textarea = textareaRef.current;
-			textarea.style.height = 'auto';
-			textarea.style.height = `${textarea.scrollHeight}px`;
 		}
 	}
 
@@ -34,7 +28,6 @@ function AddNote({ handleAddNote }) {
 	return (
 		<div className="note new">
 			<textarea
-				ref={textareaRef}
 				className='note-title'
 				rows={1}
 				cols='10'

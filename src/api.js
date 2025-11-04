@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-	baseURL: 'https://localhost:7008/api'
+	baseURL: 'https://uon1158tmh.execute-api.ap-southeast-2.amazonaws.com/dev'
 });
 
 let refreshing = false;
@@ -12,7 +12,7 @@ api.interceptors.response.use(
 			refreshing = true;
 			try {
 				const refreshToken = localStorage.getItem("refreshToken");
-				const res = await axios.post("https://localhost:7008/api/refreshToken", {refreshToken});
+				const res = await axios.post("https://uon1158tmh.execute-api.ap-southeast-2.amazonaws.com/dev/api/refreshToken", {refreshToken});
 				localStorage.setItem('token', res.data.token);
 				refreshing = false;
 

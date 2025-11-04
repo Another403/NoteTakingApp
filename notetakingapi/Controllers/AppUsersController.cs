@@ -3,6 +3,7 @@ using notetakingapi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace notetakingapi.Controllers
 {
@@ -41,7 +42,7 @@ namespace notetakingapi.Controllers
 			_context = context;
 		}
 
-		
+		[AllowAnonymous]
 		[HttpGet]
 		public async Task<ActionResult<List<AppUser>>> GetUsers() {
 			return Ok(await _context.AppUsers.ToListAsync());

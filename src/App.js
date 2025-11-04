@@ -14,6 +14,7 @@ import LoginPage from './pages/LoginPage.js';
 import RegisterPage from './pages/RegisterPage.js';
 import TrashPage from './pages/TrashPage.js';
 import FavoritesPage from './pages/FavoritesPage.js';
+import PasswordChangePage from './pages/PasswordChangePage.js';
 
 import PageTitles from './helpers/PageTitles.js';
 
@@ -28,6 +29,7 @@ function App() {
 					<Route path='/register' element={<RegisterPage />}/>
 					<Route path='/trash' element={<TrashPage/>}/>
 					<Route path='/favorites' element={<FavoritesPage/>}/>
+					<Route path='/passwordchange' element={<PasswordChangePage/>}/>
 				</Routes>
 			</BrowserRouter>
 		</div>

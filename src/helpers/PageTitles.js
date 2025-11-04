@@ -23,6 +23,9 @@ function PageTitles() {
 			case "/favorites":
 				title = "Favorites | NoteTakingApp";
 				break;
+			case "/passwordchange":
+				title = "Change Password | NoteTakingApp";
+				break;
 			default:
 				title = "Not Found";
 				break;
