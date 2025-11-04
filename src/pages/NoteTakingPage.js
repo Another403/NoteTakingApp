@@ -15,7 +15,7 @@ function NoteTakingPage() {
 	const [darkMode, setDarkMode] = useState(false);
 
 	const fetchNotes = async () => {
-		const res = await api.get('/notes');
+		const res = await api.get('/Notes');
 		setNotes(res.data);
 	}
 
@@ -23,7 +23,7 @@ function NoteTakingPage() {
 		const newNote = { id: nanoid(), title, content };
 		setNotes(prev => [...prev, newNote]);
 		try {
-			await api.post('/notes', {
+			await api.post('/Notes', {
 				title: title,
 				content: content
 			});
@@ -35,7 +35,7 @@ function NoteTakingPage() {
 	}
 
 	useEffect(() => {
-		api.get('/notes')
+		api.get('/Notes')
 		.then(res => setNotes(res.data))
 		.catch(err => console.error(err));
 	}, []);
@@ -43,7 +43,7 @@ function NoteTakingPage() {
 	const deleteNote = async (id) => {
 		setNotes(notes.filter(note => note.id !== id));
 		try {
-			await api.delete(`/notes/${id}`);
+			await api.delete(`/Notes/${id}`);
 			await fetchNotes();
 		} catch (err) {
 			console.error(err);
@@ -53,7 +53,7 @@ function NoteTakingPage() {
 
 	const toggleFavorites = async (id) => {
 		try {
-			await api.put(`/notes/favorite/${id}`);
+			await api.put(`/Notes/favorite/${id}`);
 			await fetchNotes();
 		} catch (err) {
 			console.error(err);

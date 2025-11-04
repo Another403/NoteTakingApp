@@ -15,7 +15,7 @@ function TrashPage() {
 	const [darkMode, setDarkMode] = useState(false);
 
 	const fetchNotes = async () => {
-		const res = await api.get('/notes');
+		const res = await api.get('/Notes');
 		setNotes(res.data);
 	}
 
@@ -23,7 +23,7 @@ function TrashPage() {
 		const newNote = { id: nanoid(), title, content };
 		setNotes(prev => [...prev, newNote]);
 		try {
-			await api.post('/notes', {
+			await api.post('/Notes', {
 				title: title,
 				content: content
 			});
@@ -35,7 +35,7 @@ function TrashPage() {
 	}
 
 	useEffect(() => {
-		api.get('/notes')
+		api.get('/Notes')
 		.then(res => setNotes(res.data))
 		.catch(err => console.error(err));
 	}, []);
@@ -43,7 +43,7 @@ function TrashPage() {
 	const deleteNote = async (id) => {
 		setNotes(notes.filter(note => note.id !== id));
 		try {
-			await api.delete(`/notes/${id}`);
+			await api.delete(`/Notes/${id}`);
 			await fetchNotes();
 		} catch (err) {
 			console.error(err);
@@ -54,7 +54,7 @@ function TrashPage() {
 	const restoreNote = async (id) => {
 		setNotes(notes.filter(note => note.id !== id));
 		try {
-			await api.put(`/notes/restore/${id}`);
+			await api.put(`/Notes/restore/${id}`);
 			await fetchNotes();
 		} catch (err) {
 			console.error(err);
