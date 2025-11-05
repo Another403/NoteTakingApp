@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 export const api = axios.create({
-	baseURL: 'https://uon1158tmh.execute-api.ap-southeast-2.amazonaws.com/dev/api'
+	//baseURL: 'https://uon1158tmh.execute-api.ap-southeast-2.amazonaws.com/dev/api'
+	baseURL: "https://localhost:7008/api"
 });
 
 let refreshing = false;

@@ -13,5 +13,8 @@
   "function-architecture": "x86_64",
   "tracing-mode": "PassThrough",
   "environment-variables": "",
-  "image-tag": ""
+  "image-tag": "",
+  "function-role": "arn:aws:iam::146663730143:role/service-role/akito",
+  "function-subnets": "subnet-0c115c385d2e1a24b,subnet-08e137816ac8a1885,subnet-00ac3da90fbe42dd9",
+  "function-security-groups": "sg-0be8a147c7e9d52a5"
 }

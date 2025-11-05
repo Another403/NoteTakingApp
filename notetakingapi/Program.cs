@@ -109,9 +109,9 @@ app.MapPost("/api/signup", async (
 	{
 		AppUser user = new AppUser()
 		{
-		UserName = userRegistrationModel.Email,
-		Email = userRegistrationModel.Email,
-		FullName = userRegistrationModel.FullName,
+			UserName = userRegistrationModel.Email,
+			Email = userRegistrationModel.Email,
+			FullName = userRegistrationModel.FullName,
 		};
 		var result = await userManager.CreateAsync(
 			user,
@@ -213,6 +213,36 @@ app.MapPost("api/logout", [Authorize] async (
 	});
 
 app.MapGet("/", () => "Hello World!");
+
+app.MapPut("api/changePassword", [Authorize] async(
+	UserManager<AppUser> userManager,
+	ClaimsPrincipal currentUser,
+	[FromBody] PasswordChangeModel passwordChangeModel
+	) => {
+		var user = await userManager.FindByIdAsync(
+					currentUser.FindFirstValue(ClaimTypes.NameIdentifier));
+
+		if (user == null) return Results.NotFound();
+
+		if (passwordChangeModel.NewPassword1 != passwordChangeModel.NewPassword2)
+			return Results.BadRequest();
+
+		var result = await userManager.ChangePasswordAsync(
+				user,
+				passwordChangeModel.OldPassword,
+				passwordChangeModel.NewPassword1
+			);
+
+		if (!result.Succeeded)
+		{
+			var err = result.Errors.Select(e => e.Description).ToList();
+			return Results.BadRequest(new { message = "Password change failed", err });
+		}
+
+		await userManager.UpdateSecurityStampAsync(user);
+
+		return Results.Ok(new { message = "Password changed successfully" });
+	});
 #endregion
 
 app.Run();
@@ -233,4 +263,11 @@ public class LoginModel
 public class RefreshModel
 {
 	public string RefreshToken { get; set; } = null!;
+}
+
+public class PasswordChangeModel
+{
+	public string OldPassword { get; set; } = null!;
+	public string NewPassword1 { get; set; } = null!;
+	public string NewPassword2 { get; set; } = null!;
 }

@@ -11,30 +11,6 @@ namespace notetakingapi.Controllers
 	[ApiController]
 	public class AppUsersController : ControllerBase
 	{
-		/*
-		static private List<User> users = new List<User>
-		{
-			new User
-			{
-				Id = 1,
-				Username = "Akito",
-				Password = "admin"
-			},
-			new User
-			{
-				Id = 2,
-				Username = "Yusa",
-				Password = "princess"
-			},
-			new User
-			{
-				Id = 3,
-				Username = "Seven",
-				Password = "alternative"
-			}
-		};
-		*/
-
 		private readonly NoteTakingContext _context;
 
 		public AppUsersController(NoteTakingContext context)

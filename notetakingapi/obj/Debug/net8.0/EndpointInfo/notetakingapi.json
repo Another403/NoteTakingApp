@@ -887,6 +887,28 @@
         }
       }
     },
+    "/api/changePassword": {
+      "put": {
+        "tags": [
+          "notetakingapi"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordChangeModel"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/WeatherForecast": {
       "get": {
         "tags": [
@@ -1189,6 +1211,24 @@
           },
           "isFavorite": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PasswordChangeModel": {
+        "type": "object",
+        "properties": {
+          "oldPassword": {
+            "type": "string",
+            "nullable": true
+          },
+          "newPassword1": {
+            "type": "string",
+            "nullable": true
+          },
+          "newPassword2": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

@@ -26,6 +26,7 @@ function RegisterPage() {
 				password: password1,				
 			});
 
+			alert('successfully registered, please log in');
 			navigate('/');
 		} catch (error) {
 			alert('registration error');
