@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("notetakingapi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+51561f525b81c88771ebad546a6e9698cc4ded96")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+80e284ef4fd4b35991b3f14d2233f0a9d772c021")]
 [assembly: System.Reflection.AssemblyProductAttribute("notetakingapi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("notetakingapi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
