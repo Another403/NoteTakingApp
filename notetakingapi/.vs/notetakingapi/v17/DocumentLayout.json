@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|f:\\akitoproject\\notetakingapp\\notetakingapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|f:\\akitoproject\\notetakingapp\\notetakingapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|f:\\akitoproject\\notetakingapp\\notetakingapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|f:\\akitoproject\\notetakingapp\\notetakingapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,10 +27,6 @@
       "RelativeMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|solutionrelative:controllers\\appuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|f:\\akitoproject\\notetakingapp\\notetakingapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|f:\\akitoproject\\notetakingapp\\notetakingapi\\models\\note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|solutionrelative:models\\note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -29,10 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|f:\\akitoproject\\notetakingapp\\notetakingapi\\notetakingapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
       "RelativeMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|solutionrelative:notetakingapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|f:\\akitoproject\\notetakingapp\\notetakingapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B1942A52-DA32-4952-98BA-2B9149311919}|notetakingapi.csproj|f:\\akitoproject\\notetakingapp\\notetakingapi\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,17 +54,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAHcAAAAAAAAAAAAAAIUAAABYAAAAAAAAAA==",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAIUAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-21T06:58:05.253Z",
               "IsPinned": true,
@@ -68,7 +72,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-12T03:58:36.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "NoteTakingContext.cs",
               "DocumentMoniker": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\Data\\NoteTakingContext.cs",
               "RelativeDocumentMoniker": "Data\\NoteTakingContext.cs",
@@ -80,7 +97,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "NotesController.cs",
               "DocumentMoniker": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\Controllers\\NotesController.cs",
               "RelativeDocumentMoniker": "Controllers\\NotesController.cs",
@@ -92,19 +109,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAACAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-21T07:26:11.427Z"
+              "WhenOpened": "2025-10-21T07:26:11.427Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Note.cs",
               "DocumentMoniker": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\Models\\Note.cs",
               "RelativeDocumentMoniker": "Models\\Note.cs",
@@ -116,7 +134,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "AppUser.cs",
               "DocumentMoniker": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\Models\\AppUser.cs",
               "RelativeDocumentMoniker": "Models\\AppUser.cs",
@@ -128,7 +146,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "AppUsersController.cs",
               "DocumentMoniker": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\Controllers\\AppUsersController.cs",
               "RelativeDocumentMoniker": "Controllers\\AppUsersController.cs",
@@ -140,7 +158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "launchSettings.json",
               "DocumentMoniker": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
@@ -148,11 +166,12 @@
               "RelativeToolTip": "Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-21T07:35:19.212Z"
+              "WhenOpened": "2025-10-21T07:35:19.212Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "notetakingapi.csproj",
               "DocumentMoniker": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\notetakingapi.csproj",
               "RelativeDocumentMoniker": "notetakingapi.csproj",
@@ -164,7 +183,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "notetakingapi.http",
               "DocumentMoniker": "F:\\AkitoProject\\notetakingapp\\notetakingapi\\notetakingapi.http",
               "RelativeDocumentMoniker": "notetakingapi.http",
